@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <cassert>
+
+// Screeing interview in Bloomberg
 
 int customAtoi(const std::string& str) {
     int result = 0;
@@ -78,15 +81,26 @@ int customAtoi(const std::string& str) {
 
 int main() {
 
-    while (1)
-    {
-        std::string input;
-        std::cout << "Enter a string: ";
-        std::cin >> input;
+    //while (1)
+    //{
+    //    std::string input;
+    //    std::cout << "Enter a string: ";
+    //    std::cin >> input;
+    //    int result = customAtoi(input);
+    //    std::cout << "Converted integer: " << result << std::endl;
+    //}
 
-        int result = customAtoi(input);
-        std::cout << "Converted integer: " << result << std::endl;
-    }
+    assert(677 == customAtoi("677"));
+    assert(-1024 == customAtoi("-1024"));
 
-    return 0;
+    assert(256 == customAtoi("0x100"));
+    assert(-255 == customAtoi("-0xFF"));
+
+    assert(8 == customAtoi("010"));
+    assert(8 == customAtoi("00010"));
+    assert(-16 == customAtoi("-020"));
+    assert(-24 == customAtoi("-000030"));
+
+    assert(0 == customAtoi("ff"));
+    std::cout << "Summ of vector. All test cases passed! \n";
 }
